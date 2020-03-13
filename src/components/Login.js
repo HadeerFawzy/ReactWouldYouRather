@@ -1,17 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
 
-const Login = () => (
-  <form>
-    <h2>
-      SIGN IN
-    </h2>
+class Login extends Component{
+  render() {
+    const users = this.props.users;
+    return (
+      <form>
+        <h2>
+          SIGN IN
+        </h2>
+        <select id="users">
+          { Object.keys(users).map((id) => {
+            let user = users[id]
+            return (
+              <option key={id} value={id}>
+                {user.name}
+              </option>
+            )
+          })}
+        </select>
+    
+        <input type="submit" value="Submit"/>
+      </form>
+    )
+  }
+};
 
-    <select id="users">
-      <option value="volvo">Volvo</option>
-    </select>
 
-    <input type="submit" value="Submit"/>
-  </form>
-);
+function mapStateToProps ({ users }) {
+  return {
+    users
+  }
+}
 
-export default Login;
+export default connect(mapStateToProps)(Login)
