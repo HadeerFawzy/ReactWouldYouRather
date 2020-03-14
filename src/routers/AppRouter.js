@@ -15,8 +15,6 @@ class AppRouter extends Component {
   render() {
     return (
       <BrowserRouter>
-      { this.props.loading === true ? null
-        : 
         <div>
           <Header />
           <Switch>
@@ -31,7 +29,6 @@ class AppRouter extends Component {
             }
           </Switch>
         </div>
-      }
       </BrowserRouter>
     )
   }
