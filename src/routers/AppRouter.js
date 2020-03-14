@@ -1,4 +1,4 @@
-import React, { Component }  from 'react';
+import React, { Component, Fragment }  from 'react';
 import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
@@ -20,10 +20,15 @@ class AppRouter extends Component {
         <div>
           <Header />
           <Switch>
-            <Route path="/dashboard/:id" component={Dashboard} exact={true} />
-            <Route path="/top3" component={LeaderBoard} />
-            <Route path="/create" component={NewQuestion} />
-            <Route path="/" component={login} />
+            {
+              this.props.authedUser == null
+              ? <Route path='/' exact component={login} /> 
+              : <Fragment>
+                  <Route path="/" component={Dashboard} exact={true} />
+                  <Route path="/top3" component={LeaderBoard} />
+                  <Route path="/create" component={NewQuestion} />
+                </Fragment>
+            }
           </Switch>
         </div>
       }
@@ -34,7 +39,7 @@ class AppRouter extends Component {
 
 function mapStateToProps ({ authedUser }) {
   return {
-    loading: authedUser === null
+    authedUser
   }
 }
 

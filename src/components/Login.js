@@ -18,8 +18,6 @@ class Login extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    alert('in')
-    alert(this.state.user)
     const { setAuthedUser } = this.props
     this.state.user !== '' ? setAuthedUser(this.state.user) : alert('select A user');
 
