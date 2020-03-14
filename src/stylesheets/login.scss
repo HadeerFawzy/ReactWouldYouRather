@@ -1,0 +1,70 @@
+@import './varaibles';
+
+.loginForm {
+  margin: 0 auto;
+  width: 50%;
+  text-align: center;
+  border: 1px solid $grey;
+  border-radius: 5px;
+  margin-top: 4rem;
+  header {
+    background: rgba($grey, 0.2);
+    text-align: center;
+    padding: 1rem;
+    h3 {
+      margin: 0;
+    }
+    p {
+      margin-bottom: 0;
+      color: $dark-grey;
+      margin-top: 0.5rem;
+    }
+  }
+  .logoImg {
+    height: 200px;
+    pointer-events: none;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .logoImg {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  h2 {
+    color: $primary-color;
+  }
+  .usersSelect,
+  .submit {
+    width: 70%;
+    margin: 0 auto;
+    height: 40px;
+    font-size: 18px;
+    &:focus {
+      outline: none;
+    }
+  }
+  .usersSelect {
+    margin-bottom: 0.5rem;
+  }
+  .submit {
+    color: $white;
+    background-color: $primary-color;
+    margin-bottom: 3rem;
+    border-radius: 5px;
+    border: 0;
+    font-weight: bold;
+    &:disabled {
+      background-color: rgba($primary-color, 0.7);
+      cursor: not-allowed;
+    }
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+

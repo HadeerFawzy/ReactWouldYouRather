@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import '../stylesheets/header.scss';
 
 const Header = () => (
-  <header>
+  <header className="appNav">
     <h1 className="title">Would You Rather</h1>
     <div className="links-wrapper">
       <NavLink to="/dashboard/:id" activeClassName="is-active" exact={true}>Dashboard</NavLink>
