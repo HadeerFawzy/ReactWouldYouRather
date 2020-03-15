@@ -1,18 +1,41 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import '../stylesheets/dashboard.scss';
 
 class Dashboard extends Component {
-  
+  state = {
+    tab: 1
+  }
+
   render() {
     const user = this.props.user;
     const answeredQuestions = this.props.answeredQuestions;
     const unAnsweredQuestions = this.props.unAnsweredQuestions;
-    console.log("USER", user)
-    console.log("answeredQuestions", answeredQuestions)
-    console.log("unAnsweredQuestions", unAnsweredQuestions)
+
     return (
-      <div>
-        
+      <div className='dashboard'>
+        <div className="tabs-wrapper">
+          <div className={`tab ${this.state.tab == 1 ? 'active' : ''}`}
+               onClick={() => {this.setState({ tab: 1})}}>
+            Unanswered Questions
+          </div>
+          <div className={`tab ${this.state.tab == 2 ? 'active' : ''}`}
+               onClick={() => {this.setState({ tab: 2})}}>
+            Answered Questions
+          </div>
+        </div>
+        <div className='content-wrapper'>
+          { this.state.tab == 1 ?
+              <p>
+                unAnsweredQuestions
+              </p>
+            : this.state.tab == 2 ? 
+              <p>
+                answeredQuestions
+              </p>  
+            : null  
+          }
+        </div>
       </div>
     )
   }

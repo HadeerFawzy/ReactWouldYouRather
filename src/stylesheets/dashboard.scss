@@ -1,0 +1,43 @@
+@import './varaibles';
+
+.dashboard {
+  margin: 0 auto;
+  width: 50%;
+  margin: 3rem auto;
+  width: 50%;
+  border: 1px solid $grey;
+  border-radius: 4px;
+  .tabs-wrapper {
+    background: rgba($grey, 0.2);
+    border-bottom: 1px solid $grey;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .tab {
+    cursor: pointer;
+    font-weight: bold;
+    position: relative;
+    width: 50%;
+    text-align: center;
+    padding: 1rem;
+    &:first-of-type {
+      &::after {
+        content: '';
+        height: 100%;
+        width: 1px;
+        background-color: $grey;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+    &.active {
+      color: $primary-color;
+    }
+  }
+}
+
+.content-wrapper {
+  padding: 10px;
+}
