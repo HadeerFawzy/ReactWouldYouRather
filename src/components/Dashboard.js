@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import Question from './Question';
 import '../stylesheets/dashboard.scss';
 
 class Dashboard extends Component {
@@ -26,13 +27,13 @@ class Dashboard extends Component {
         </div>
         <div className='content-wrapper'>
           { this.state.tab == 1 ?
-              <p>
-                unAnsweredQuestions
-              </p>
+              answeredQuestions.map((question, index) => (
+                <Question key={index} id={question.id}/>
+              ))
             : this.state.tab == 2 ? 
-              <p>
-                answeredQuestions
-              </p>  
+              unAnsweredQuestions.map((question, index) => (
+                <Question key={index} id={question.id}/>
+              )) 
             : null  
           }
         </div>
