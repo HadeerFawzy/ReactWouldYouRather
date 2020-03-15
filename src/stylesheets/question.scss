@@ -1,9 +1,19 @@
 @import './varaibles';
 
+$borderWidth: 4px;
+$height: 16px;
+$width: 7px;
+$borderColor: #508619;
+
 .questions-wrapper_qw {
   border: 1px solid $grey;
   border-radius: 4px;
   margin-bottom: 1rem;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  }
   .qw_user {
     background: rgba($grey, 0.2);
     text-align: center;
@@ -35,7 +45,34 @@
   }
   .qw_answers {
     h2 {
-
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+    .qw_option {
+      font-size: 18px;
+      padding: 0.5rem 1rem 0rem;
+      color: $dark-grey;
+      &::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        background-color: $dark-grey;
+        display: inline-block;
+        margin-right: 1rem;
+      }
+      &.optionOne,
+      &.optionTwo {
+        color: #508619;
+        font-weight: bold;
+        &::before {
+          background-color: transparent;
+          transform: rotate(45deg);
+          height: $height;
+          width: $width;
+          border-bottom: $borderWidth solid $borderColor;
+          border-right: $borderWidth solid $borderColor;
+        }
+      }
     }
   }
 }

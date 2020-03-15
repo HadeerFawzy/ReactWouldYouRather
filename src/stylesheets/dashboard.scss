@@ -42,4 +42,8 @@
 
 .content-wrapper {
   padding: 1rem;
+  a {
+    text-decoration: none;
+    color: unset;
+  }
 }

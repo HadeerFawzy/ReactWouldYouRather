@@ -27,11 +27,11 @@ class Dashboard extends Component {
         </div>
         <div className='content-wrapper'>
           { this.state.tab == 1 ?
-              answeredQuestions.map((question, index) => (
+              unAnsweredQuestions.map((question, index) => (
                 <Question key={index} id={question}/>
               ))
             : this.state.tab == 2 ? 
-              unAnsweredQuestions.map((question, index) => (
+              answeredQuestions.map((question, index) => (
                 <Question key={index} id={question}/>
               )) 
             : null  
