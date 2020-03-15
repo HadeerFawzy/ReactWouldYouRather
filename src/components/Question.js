@@ -12,7 +12,7 @@ class Question extends Component {
     let randomColor = colors[Math.floor(Math.random() * colors.length)];
 
     const optionOne = question.optionOne.votes.includes(this.props.authedUser) ? "optionOne" : ""
-    const optionTwo = question.optionTwo.votes.includes(this.props.authedUser) ? "optionTwo" : ""
+    const optionTwo = question.optionTwo.votes.includes(this.props.authedUser) ? "optionsTwo" : ""
 
     return(
       <Link to={`/questions/${this.props.questionId}`} className=''>
