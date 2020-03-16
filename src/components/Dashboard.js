@@ -9,28 +9,27 @@ class Dashboard extends Component {
   }
 
   render() {
-    const user = this.props.user;
     const answeredQuestions = this.props.answeredQuestions;
     const unAnsweredQuestions = this.props.unAnsweredQuestions;
 
     return (
       <div className='dashboard'>
         <div className="tabs-wrapper">
-          <div className={`tab ${this.state.tab == 1 ? 'active' : ''}`}
+          <div className={`tab ${this.state.tab === 1 ? 'active' : ''}`}
                onClick={() => {this.setState({ tab: 1})}}>
             Unanswered Questions
           </div>
-          <div className={`tab ${this.state.tab == 2 ? 'active' : ''}`}
+          <div className={`tab ${this.state.tab === 2 ? 'active' : ''}`}
                onClick={() => {this.setState({ tab: 2})}}>
             Answered Questions
           </div>
         </div>
         <div className='content-wrapper'>
-          { this.state.tab == 1 ?
+          { this.state.tab === 1 ?
               unAnsweredQuestions.map((question, index) => (
                 <Question key={index} id={question}/>
               ))
-            : this.state.tab == 2 ? 
+            : this.state.tab === 2 ? 
               answeredQuestions.map((question, index) => (
                 <Question key={index} id={question}/>
               )) 

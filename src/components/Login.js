@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../stylesheets/login.scss';
 import logo from '../logo.svg';
@@ -53,8 +53,8 @@ class Login extends Component {
         </select>
     
         <input type="submit" value="Submit" className="submit" 
-               disabled={this.state.user == ''}
-               title={this.state.user == '' ? "Please select a user" : ""}/>
+               disabled={this.state.user === ''}
+               title={this.state.user === '' ? "Please select a user" : ""}/>
       </form>
     )
   }
