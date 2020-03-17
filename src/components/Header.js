@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { logout } from '../actions/authedUser';
 import '../stylesheets/header.scss';
 
 class Header extends Component{
+  logout = () => {
+    this.props.dispatch(logout())
+  }
   render(){
     return (
       <header className="appNav">
@@ -13,7 +17,7 @@ class Header extends Component{
             <NavLink to="/" activeClassName="is-active" exact={true}>Dashboard</NavLink>
             <NavLink to="/create" activeClassName="is-active">NewQuestion</NavLink>
             <NavLink to="/top3" activeClassName="is-active">LeaderBoard</NavLink>
-            <NavLink to="/logout" activeClassName="is-active">Logout</NavLink>
+            <NavLink to="/" activeClassName="is-active" onClick={this.logout}>Logout</NavLink>
           </div>
         }
       </header>

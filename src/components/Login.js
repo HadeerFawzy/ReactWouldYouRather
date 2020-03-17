@@ -18,9 +18,7 @@ class Login extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    const { setAuthedUser } = this.props
-    this.state.user !== '' ? setAuthedUser(this.state.user) : alert('select A user');
-
+    this.state.user !== '' ? this.props.dispatch(setAuthedUser(this.state.user)) : alert('select A user');
   }
 
   render() {
@@ -67,12 +65,4 @@ function mapStateToProps ({ users }) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-      setAuthedUser: (id) => {
-          dispatch(setAuthedUser(id))
-      }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps)(Login)
