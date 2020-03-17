@@ -8,11 +8,11 @@ export function receiveUsers (users) {
   }
 }
 
-export function saveUserAnswer (auth, qid, option) {
+export function saveUserAnswer (authedUser, qid, answer) {
   return {
     type: USER_QUESTION_ANSWER,
-    auth,
+    authedUser,
     qid,
-    option
+    answer
   }
 }

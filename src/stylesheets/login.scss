@@ -52,6 +52,7 @@
     border-radius: 5px;
     border: 0;
     font-weight: bold;
+    cursor: pointer;
     &:disabled {
       background-color: rgba($primary-color, 0.7);
       cursor: not-allowed;
