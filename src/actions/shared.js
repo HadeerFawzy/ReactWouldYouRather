@@ -1,10 +1,11 @@
 import { getInitialData } from '../utils/api'
-import { receiveUsers } from '../actions/users'
-import { receiveQuestions } from '../actions/questions'
+import { receiveUsers, saveUserAnswer } from '../actions/users'
+import { receiveQuestions, saveQuesAnswer } from '../actions/questions'
 import { setAuthedUser } from '../actions/authedUser'
+import { saveQuestionAnswer } from '../utils/api'
 import { showLoading, hideLoading } from 'react-redux-loading'
 
-const AUTHED_ID = 'sarahedo'
+const AUTHED_ID = 'tylermcginnis'
 
 export function handleInitialData () {
   return (dispatch) => {
@@ -16,5 +17,16 @@ export function handleInitialData () {
         dispatch(setAuthedUser(AUTHED_ID))
         dispatch(hideLoading())
       })
+  }
+}
+
+export function handleSaveAnswer (qid, answer) {
+  return (dispatch, getState) => {
+    const { authedUser } = getState();
+    return saveQuestionAnswer({authedUser, qid, answer})
+        .then(() => {
+            dispatch(saveQuesAnswer(authedUser, qid, answer));
+            dispatch(saveUserAnswer(authedUser, qid, answer))
+        })
   }
 }

@@ -24,7 +24,7 @@ class AppRouter extends Component {
               ? <Route path='/' exact component={login} /> 
               : <Fragment>
                   <Route path="/" component={Dashboard} exact={true} />
-                  <Route path="/questionPage/:id" component={QuestionPage} exact={true} />
+                  <Route path="/questions/:id" component={QuestionPage}/>
                   <Route path="/top3" component={LeaderBoard} />
                   <Route path="/create" component={NewQuestion} />
                 </Fragment>
