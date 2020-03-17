@@ -1,0 +1,60 @@
+@import './varaibles.scss';
+
+.new-ques-wrap_nqw {
+  margin: 0 auto;
+  width: 50%;
+  text-align: center;
+  border: 1px solid $grey;
+  border-radius: 5px;
+  margin-top: 4rem;
+  header {
+    background: rgba($grey, 0.2);
+    text-align: center;
+    padding: 1rem;
+    h1 {
+      margin: 0;
+    }
+  }
+  form {
+    padding: 1rem;
+  }
+  .form-title {
+    text-align: left;
+  }
+  .question-text {
+    text-align: left;
+  }
+  .option-input,
+  .submit {
+    height: 40px;
+    width: 100%;
+    border-radius: 5px;
+    &:focus {
+      outline: none;
+    }
+  }
+  .option-input {
+    outline: none;
+    border: 1px solid $grey;
+    padding: 0 0.7rem;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  .or {
+    font-weight: bold;
+    color: $primary-color;
+  }
+  .submit {
+    color: $white;
+    background-color: $primary-color;
+    border: 0;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-size: 18px;
+    &:disabled {
+      background-color: rgba($primary-color, 0.7);
+      cursor: not-allowed;
+    }
+  }
+}
