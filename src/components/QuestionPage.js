@@ -15,7 +15,32 @@ class QuestionsPage extends Component {
     const { dispatch } = this.props
     dispatch(handleSaveAnswer(this.props.question.id, this.state.selectedAnswer))
   }
-  
+
+  optionResult = (option, userAnswer) => {
+    const answersNum = this.props.question.optionOne.votes.length + this.props.question.optionTwo.votes.length
+    const percentage = ((option.votes.length/ (answersNum))*100).toFixed(2) ;
+    return (
+      <div className={`option-result_or ${userAnswer === option.text && "colored"}`}>
+        {userAnswer === option.text &&
+          <span className="or_badge">
+            Your vote
+          </span>
+        }
+        <p className="or_text">
+          Would you rather {option.text}?
+        </p>
+        <div className="percentage-bar">
+          <div className="pb_filled" style={{ width:`${percentage}%`}}>
+            {percentage}%
+          </div>
+        </div>
+        <div className="votes-num">
+          {option.votes.length} out of {answersNum} Votes
+        </div>
+      </div>
+    )
+  }
+
   render() {
     const question = this.props.question;
     const users = this.props.users;
@@ -23,10 +48,9 @@ class QuestionsPage extends Component {
     const colors = ['#574b90', '#3dc1d3', '#f78fb3', '#cf6a87', '#f5cd79', '#f19066'];
     let randomColor = colors[Math.floor(Math.random() * colors.length)];
   
-    const userAnswer = question.optionOne.votes.includes(this.props.authedUser) ? "optionOne" 
-                       : question.optionTwo.votes.includes(this.props.authedUser) ? "optionsTwo"
+    const userAnswer = question.optionOne.votes.includes(this.props.authedUser) ? question.optionOne.text 
+                       : question.optionTwo.votes.includes(this.props.authedUser) ? question.optionTwo.text
                        : null
-    console.log(userAnswer)                   
 
     return(
       <div className='ques-page-wrap_qpw'>
@@ -41,11 +65,11 @@ class QuestionsPage extends Component {
               </span>
             </div>
             <div className="qw_answers">
-              <h2>
-                Would You Rather ...
-              </h2>
               { userAnswer == null ?
                 <div>
+                  <h2>
+                    Would You Rather ...
+                  </h2>
                   {/* UnAnswered Question */} 
                   <label className="container"> {question.optionOne.text}
                     <input type="radio" name="radio" value="optionOne" 
@@ -60,12 +84,18 @@ class QuestionsPage extends Component {
                   <input className="submit-button" type="submit"
                           onClick={this.dispatchAnswer} 
                           value="Submit"
-                          disabled={this.state.disableSubmitBtn == 1}/>
+                          disabled={this.state.disableSubmitBtn === 1}/>
                 </div>
                 : 
-                <div>
+                <div className="answered-question_aq">
                   {/* Answered Question */}
-                  Answered Question
+                  <h2 className="aq_title">
+                    Results:
+                  </h2>
+                  <div>
+                    {this.optionResult(question.optionOne, userAnswer)}
+                    {this.optionResult(question.optionTwo, userAnswer)}
+                  </div>
                 </div>
               }  
             </div>

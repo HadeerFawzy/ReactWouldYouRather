@@ -26,8 +26,6 @@ $borderColor: #508619;
     align-items: center;
   }
   .qw_1st-letter {
-    border-right: 1px solid $grey;
-    margin-right: 1rem;
     span {
       // background: $primary-color;
       color: $white;
@@ -44,8 +42,10 @@ $borderColor: #508619;
     }
   }
   .qw_answers {
+    border-left: 1px solid $grey;
     width: 100%;
-    padding: 1rem 1rem 1rem 0;
+    padding: 0 1rem;
+    margin: 1rem 0;
     h2 {
       margin-top: 0;
       margin-bottom: 0.5rem;
