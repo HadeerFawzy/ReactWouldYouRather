@@ -8,57 +8,59 @@ class NewQuestion extends Component{
   
   state = {
     optionOne: '',
-    optionTwo: ''
+    optionTwo: '',
+    redirectToDashboard: 0,
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log(this.state.optionOne, this.state.optionTwo)
     const { dispatch } = this.props
     dispatch(handleAddQuestion(this.state.optionOne, this.state.optionTwo))
-    // return (
-    //   <Redirect to='/' />
-    // )
+    this.setState({redirectToDashboard: 1})
   }
 
   render(){
+    if(this.state.redirectToDashboard) {
+      return <Redirect to='/' />
+    }
+
     return(
-    <div className='new-ques-wrap_nqw'>
-      <header>
-        <h1>
-          Create New Question
-        </h1>
-      </header>
-      <form onSubmit={this.handleSubmit}>
-        <p className='form-title'>
-          Complete the question:
-        </p>
-        <h3 className='question-text'>
-          Would you rather ...
-        </h3>
-        <input type="text" 
-               className="option-input" 
-               name="optionOne" 
-               placeholder="Enter Option One Text Here"
-               onChange={(e) => this.setState({
-                optionOne : e.target.value
-               })}/>
-        <p className="or">
-          OR
-        </p>
-        <input type="text" 
-               className="option-input" 
-               name="optionTwo" 
-               placeholder="Enter Option Two Text Here"
-               onChange={(e) => this.setState({
-                optionTwo : e.target.value
-               })}/>
-        <input type="submit" 
-               value="submit" 
-               className="submit"
-               />
-      </form>
-    </div>
+      <div className='new-ques-wrap_nqw'>
+        <header>
+          <h1>
+            Create New Question
+          </h1>
+        </header>
+        <form onSubmit={this.handleSubmit}>
+          <p className='form-title'>
+            Complete the question:
+          </p>
+          <h3 className='question-text'>
+            Would you rather ...
+          </h3>
+          <input type="text" 
+                className="option-input" 
+                name="optionOne" 
+                placeholder="Enter Option One Text Here"
+                onChange={(e) => this.setState({
+                  optionOne : e.target.value
+                })}/>
+          <p className="or">
+            OR
+          </p>
+          <input type="text" 
+                className="option-input" 
+                name="optionTwo" 
+                placeholder="Enter Option Two Text Here"
+                onChange={(e) => this.setState({
+                  optionTwo : e.target.value
+                })}/>
+          <input type="submit" 
+                value="submit" 
+                className="submit"
+                />
+        </form>
+      </div>
     )
   }
 }
