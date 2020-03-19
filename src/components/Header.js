@@ -17,7 +17,7 @@ class Header extends Component{
             <NavLink to="/" activeClassName="is-active" exact={true}>Dashboard</NavLink>
             <NavLink to="/create" activeClassName="is-active">NewQuestion</NavLink>
             <NavLink to="/top3" activeClassName="is-active">LeaderBoard</NavLink>
-            <NavLink to="/" activeClassName="is-active" onClick={this.logout}>Logout</NavLink>
+            <NavLink to="/" activeClassName="" onClick={this.logout}>Logout</NavLink>
           </div>
         }
       </header>
