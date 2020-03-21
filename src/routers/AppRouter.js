@@ -8,6 +8,7 @@ import NewQuestion from '../components/NewQuestion';
 import login from '../components/Login';
 import Header from '../components/Header';
 import QuestionPage from '../components/QuestionPage';
+import NotFoundPage from '../components/NotFoundPage';
 
 class AppRouter extends Component {
   componentDidMount() {
@@ -27,6 +28,7 @@ class AppRouter extends Component {
                   <Route path="/questions/:id" component={QuestionPage}/>
                   <Route path="/top3" component={LeaderBoard} />
                   <Route path="/create" component={NewQuestion} />
+                  <Route component={NotFoundPage} />
                 </Fragment>
             }
           </Switch>
