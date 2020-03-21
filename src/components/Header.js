@@ -17,6 +17,7 @@ class Header extends Component{
             <NavLink to="/" activeClassName="is-active" exact={true}>Dashboard</NavLink>
             <NavLink to="/create" activeClassName="is-active">NewQuestion</NavLink>
             <NavLink to="/top3" activeClassName="is-active">LeaderBoard</NavLink>
+            <h3 className='hello-user'>Hello, {this.props.users[this.props.authedUser].name}</h3>
             <NavLink to="/" activeClassName="" onClick={this.logout}>Logout</NavLink>
           </div>
         }
@@ -25,9 +26,10 @@ class Header extends Component{
   }
 };
 
-function mapStateToProps ({ authedUser }) {
+function mapStateToProps ({ authedUser, users }) {
   return {
-    authedUser
+    authedUser,
+    users
   }
 }
 
