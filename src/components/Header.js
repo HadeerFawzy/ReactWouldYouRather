@@ -18,7 +18,7 @@ class Header extends Component{
             <NavLink to="/create" activeClassName="is-active">NewQuestion</NavLink>
             <NavLink to="/top3" activeClassName="is-active">LeaderBoard</NavLink>
             <h3 className='hello-user'>Hello, {this.props.users[this.props.authedUser].name}</h3>
-            <NavLink to="/" activeClassName="" onClick={this.logout}>Logout</NavLink>
+            <NavLink to="/login" activeClassName="" onClick={this.logout}>Logout</NavLink>
           </div>
         }
       </header>

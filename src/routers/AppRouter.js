@@ -1,5 +1,5 @@
 import React, { Component, Fragment }  from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import Dashboard from '../components/Dashboard';
@@ -8,12 +8,13 @@ import NewQuestion from '../components/NewQuestion';
 import login from '../components/Login';
 import Header from '../components/Header';
 import QuestionPage from '../components/QuestionPage';
-import NotFoundPage from '../components/NotFoundPage';
+import NotLoggedInPage from '../components/NotLoggedInPage';
 
 class AppRouter extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData())
   }
+  
   render() {
     return (
       <BrowserRouter>
@@ -22,13 +23,18 @@ class AppRouter extends Component {
           <Switch>
             {
               this.props.authedUser == null
-              ? <Route path='/' exact component={login} /> 
+              ? <Switch>
+                  <Route path='/login' exact component={login} /> 
+                  <Route path='*' component={NotLoggedInPage} />
+                </Switch>  
               : <Fragment>
-                  <Route path="/" component={Dashboard} exact={true} />
-                  <Route path="/questions/:id" component={QuestionPage}/>
-                  <Route path="/top3" component={LeaderBoard} />
-                  <Route path="/create" component={NewQuestion} />
-                  <Route component={NotFoundPage} />
+                  <Switch>
+                    <Route path="/" component={Dashboard} exact={true} />
+                    <Route path="/questions/:id" component={QuestionPage}/>
+                    <Route path="/top3" component={LeaderBoard} />
+                    <Route path="/create" component={NewQuestion} />
+                    <Redirect to='/'/>
+                  </Switch> 
                 </Fragment>
             }
           </Switch>

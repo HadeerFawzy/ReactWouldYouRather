@@ -53,13 +53,18 @@
     border: 0;
     font-weight: bold;
     cursor: pointer;
+    display: block;
+    text-decoration: none;
+    line-height: 40px;
     &:disabled {
       background-color: rgba($primary-color, 0.7);
       cursor: not-allowed;
     }
   }
 }
-
+.page-404 {
+  // display: none;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

@@ -49,10 +49,11 @@ class Login extends Component {
             )
           })}
         </select>
-    
+
         <input type="submit" value="Submit" className="submit" 
                disabled={this.state.user === ''}
                title={this.state.user === '' ? "Please select a user" : ""}/>
+
       </form>
     )
   }
