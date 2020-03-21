@@ -31,8 +31,8 @@ class AppRouter extends Component {
                   <Switch>
                     <Route path="/" component={Dashboard} exact={true} />
                     <Route path="/questions/:id" component={QuestionPage}/>
-                    <Route path="/top3" component={LeaderBoard} />
-                    <Route path="/create" component={NewQuestion} />
+                    <Route path="/leaderboard" component={LeaderBoard} />
+                    <Route path="/add" component={NewQuestion} />
                     <Redirect to='/'/>
                   </Switch> 
                 </Fragment>
