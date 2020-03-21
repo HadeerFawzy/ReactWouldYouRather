@@ -51,7 +51,7 @@ class LeaderBoard extends Component {
                 </p>
                 <p className='info'>
                   <span>
-                    Answered questions 
+                    Created questions 
                   </span>
                   <span>
                     {user.questions.length}
