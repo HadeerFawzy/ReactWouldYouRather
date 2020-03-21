@@ -20,7 +20,7 @@ class AppRouter extends Component {
       <BrowserRouter>
         <div>
           <Header />
-          <Switch>
+          <Fragment>
             {
               this.props.authedUser == null
               ? <Switch>
@@ -37,7 +37,7 @@ class AppRouter extends Component {
                   </Switch> 
                 </Fragment>
             }
-          </Switch>
+          </Fragment>
         </div>
       </BrowserRouter>
     )
