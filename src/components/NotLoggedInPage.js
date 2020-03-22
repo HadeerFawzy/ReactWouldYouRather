@@ -7,12 +7,17 @@ class NotLoggedInPage extends Component {
   render () {
     return (
       <div className='page-404'>
-        404 - 
-        <Link to="/login"> Login Page </Link>
+        <h3>
+          You are not Logged In 
+        </h3>
+        <h2>
+          Go to <Link to="/"> Login Page </Link>
+        </h2>
       </div>
     )
   }
 }
 
 export default NotLoggedInPage
+
 
