@@ -1,5 +1,5 @@
-import React, { Component, Fragment }  from 'react';
-import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import React, { Component }  from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import Dashboard from '../components/Dashboard';
@@ -20,24 +20,15 @@ class AppRouter extends Component {
       <BrowserRouter>
         <div>
           <Header />
-          <Fragment>
-            {
-              this.props.authedUser == null
-              ? <Switch>
-                  <Route path='/login' exact component={login} /> 
-                  <Route path='*' component={NotLoggedInPage} />
-                </Switch>  
-              : <Fragment>
-                  <Switch>
-                    <Route path="/" component={Dashboard} exact={true} />
-                    <Route path="/questions/:id" component={QuestionPage}/>
-                    <Route path="/leaderboard" component={LeaderBoard} />
-                    <Route path="/add" component={NewQuestion} />
-                    <Redirect to='/'/>
-                  </Switch> 
-                </Fragment>
-            }
-          </Fragment>
+            <Switch>
+              <Route path='/login' exact component={login} /> 
+              <Route path="/dashboard" component={Dashboard} exact={true} />
+              <Route path="/questions/:id" component={QuestionPage}/>
+              <Route path="/leaderboard" component={LeaderBoard} />
+              <Route path="/add" component={NewQuestion} />
+              <Route path='*' component={NotLoggedInPage} />
+            </Switch> 
+          
         </div>
       </BrowserRouter>
     )

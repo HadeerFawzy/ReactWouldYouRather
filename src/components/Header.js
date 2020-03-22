@@ -12,15 +12,17 @@ class Header extends Component{
     return (
       <header className="appNav">
         <h1 className="title">Would You Rather</h1>
-        { this.props.authedUser !== null &&
+        
           <div className="links-wrapper">
-            <NavLink to="/" activeClassName="is-active" exact={true}>Dashboard</NavLink>
+            <NavLink to="/dashboard" activeClassName="is-active" exact={true}>Dashboard</NavLink>
             <NavLink to="/add" activeClassName="is-active">NewQuestion</NavLink>
             <NavLink to="/leaderboard" activeClassName="is-active">LeaderBoard</NavLink>
-            <h3 className='hello-user'>Hello, {this.props.users[this.props.authedUser].name}</h3>
+            { this.props.authedUser &&
+              <h3 className='hello-user'>Hello, {this.props.users[this.props.authedUser].name}</h3>
+            }
             <NavLink to="/login" activeClassName="" onClick={this.logout}>Logout</NavLink>
           </div>
-        }
+        
       </header>
     )
   }

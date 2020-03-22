@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import '../stylesheets/login.scss';
 import logo from '../logo.svg';
 import { setAuthedUser } from '../actions/authedUser'
+import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
 
   state = {
-    user: ''
+    user: '',
+    redirectToDashboard: 0
   }
 
   handleSelectUser = (selectedUser) => {
@@ -18,11 +20,16 @@ class Login extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.state.user !== '' ? this.props.dispatch(setAuthedUser(this.state.user)) : alert('select A user');
+    this.state.user !== '' &&
+      this.props.dispatch(setAuthedUser(this.state.user)) 
+      this.setState({redirectToDashboard: 1})
   }
 
   render() {
     const users = this.props.users;
+    if(this.state.redirectToDashboard) {
+      return <Redirect to='/dashboard' />
+    }
     return (
       <form className="loginForm" onSubmit={this.handleSubmit}>
         <header>

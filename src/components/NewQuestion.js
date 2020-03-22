@@ -9,7 +9,7 @@ class NewQuestion extends Component{
   state = {
     optionOne: '',
     optionTwo: '',
-    redirectToDashboard: 0,
+    redirectToDashboard: 0
   }
 
   handleSubmit = (e) => {
@@ -21,7 +21,7 @@ class NewQuestion extends Component{
 
   render(){
     if(this.state.redirectToDashboard) {
-      return <Redirect to='/' />
+      return <Redirect to='/dashboard' />
     }
 
     return(
