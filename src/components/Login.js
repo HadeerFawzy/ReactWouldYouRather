@@ -27,8 +27,10 @@ class Login extends Component {
 
   render() {
     const users = this.props.users;
+    const { from } = this.props.location.state || { from: { pathname: '/' } }
+
     if(this.state.redirectToDashboard) {
-      return <Redirect to='/dashboard' />
+      return <Redirect to={ from } />
     }
     return (
       <form className="loginForm" onSubmit={this.handleSubmit}>

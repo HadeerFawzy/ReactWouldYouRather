@@ -14,7 +14,7 @@ class Header extends Component{
         <h1 className="title">Would You Rather</h1>
         
           <div className="links-wrapper">
-            <NavLink to="/dashboard" activeClassName="is-active" exact={true}>Dashboard</NavLink>
+            <NavLink to="/" activeClassName="is-active" exact={true}>Dashboard</NavLink>
             <NavLink to="/add" activeClassName="is-active">NewQuestion</NavLink>
             <NavLink to="/leaderboard" activeClassName="is-active">LeaderBoard</NavLink>
             { this.props.authedUser &&

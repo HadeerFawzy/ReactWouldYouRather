@@ -21,7 +21,7 @@ class NewQuestion extends Component{
 
   render(){
     if(this.state.redirectToDashboard) {
-      return <Redirect to='/dashboard' />
+      return <Redirect to='/' />
     }
 
     return(

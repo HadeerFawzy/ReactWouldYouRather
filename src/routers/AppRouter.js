@@ -1,5 +1,5 @@
 import React, { Component }  from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import Dashboard from '../components/Dashboard';
@@ -14,19 +14,32 @@ class AppRouter extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData())
   }
-  
+
   render() {
+    console.log(this.props.authedUser)
+
+    const PrivateRoute = ({component: Component, ...rest}) => (
+      <Route {...rest} render={(props) => (
+        this.props.authedUser !== null ?
+          <Component {...props}/>
+          : <Redirect to={{
+            pathname: '/login',
+            state: { from: props.location }
+          }}/>
+      )}/>
+    )
+
     return (
       <BrowserRouter>
         <div>
           <Header />
             <Switch>
               <Route path='/login' exact component={login} /> 
-              <Route path="/dashboard" component={Dashboard} exact={true} />
-              <Route path="/questions/:id" component={QuestionPage}/>
-              <Route path="/leaderboard" component={LeaderBoard} />
-              <Route path="/add" component={NewQuestion} />
-              <Route path='*' component={NotLoggedInPage} />
+              <PrivateRoute path="/" component={Dashboard} exact={true} />
+              <PrivateRoute path="/questions/:id" component={QuestionPage}/>
+              <PrivateRoute path="/leaderboard" component={LeaderBoard} />
+              <PrivateRoute path="/add" component={NewQuestion} />
+              <Route path='/404' component={NotLoggedInPage} />
             </Switch> 
           
         </div>
