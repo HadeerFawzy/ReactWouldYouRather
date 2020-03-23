@@ -39,7 +39,7 @@ class AppRouter extends Component {
               <PrivateRoute path="/questions/:id" component={QuestionPage}/>
               <PrivateRoute path="/leaderboard" component={LeaderBoard} />
               <PrivateRoute path="/add" component={NewQuestion} />
-              <Route path='/404' component={NotLoggedInPage} />
+              <Route component={NotLoggedInPage} />
             </Switch> 
           
         </div>
